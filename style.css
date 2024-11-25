@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0d0;
+    /* background-color: pink; */
+    min-height: 100vh;
+    position: relative;
+}
+
+.nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid rgba(0,0,0, 0.5);
+    background-color: red;
+}
+
+/* .middle{
+    background-color: brown;
+} */
+
+.searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #ffa726; */
+}
+
+.searching{
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 40%;
+    text-align: center;
+    /* background-color: aquamarine; */
+}
+
+.right{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* background-color: aqua; */
+}
+
+/* .darkmode{
+    background-color: springgreen;
+} */
+
+.turn_dark{
+    width: 40px;
+    padding-top: 3px;
+    /* background-color: blueviolet; */
+    cursor: pointer;
+    margin-right: 25px;
+}
+
+.footer{
+    width: 100%;
+    background-color: rgb(152, 152, 152);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    /* animation: fadeIn 0.5s; */
+}
+
+.login_Button{
+    border: none;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+
+    /* margin-right: 10px; */
+    font-size: 30px;
+    transition: background-color 0.3s;
+}
+
+.login_Button:hover {
+    background-color: rgb(178, 0, 0);
+  }
+
+.container{
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* background-color: aqua; */
+    width: 100%;
+}
+
+.logo_class{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: pink; */
+}
+
+.logo{
+    width: 40%;
+    min-width: 350px;
+    cursor: pointer;
+    /* background-color: yellowgreen;
+    margin-bottom: 30px; */
+}
+
+.image_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+/* display:flex; flex-direction:row; flex-wrap:wrap*/
+.main-images, .popup-content { 
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px; /* Adjust space between icons as needed */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-top: 3px solid black;
+    /* background-color: yellow; */
+  }
+
+.main-images img{
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+    margin: 10px;
+    /* background-color: brown; */
+    transition: transform 0.5s;
+}
+
+.main-images img:hover{
+    transform: scale(1.3);
+}
+
+.image-wrapper, .link-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: burlywood; */
+}
+
+.image-label, .link-label {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.add-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* background-color: #ffa726; */
+}
+
+.link-name, .link-url, .btn-add-link{
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 5px;
+    margin-bottom: 40px;
+}
+.btn-add-link{
+    transition: transform 0.5s;
+}
+.btn-add-link:hover{
+    transform: scale(1.1);
+}
+
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5; 
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s;
+}
+
+.popup-content{
+    background: #ffff;
+    border-radius: 15px;
+    padding: 3%;
+    width: auto;
+    height: auto;
+    position: relative;
+    gap: 20px;
+}
+.popup img{
+    width: 90px;
+    height: 90px;
+}
+
+.link-image{
+    width: 60px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.link-image:hover{
+    transform: scale(1.1);
+}
+
+.close-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.close-button:hover{
+    color: red;
+    transform: scale(1.3);
+}
+
+@keyframes fadeIn{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@media screen and (max-width: 800px) {
+    /* Your styles go here */
+    .main-images, .popup-content{
+        border: none;
+        width: 80%;
+        /* background-color: #d32f2f; */
+    }
+
+    .logo{
+        border-bottom: 3px solid black;
+    }
+    .main-images img{
+        width: 50px;
+        height: 50px;
+        /* background-color: #d32f2f; */
+    }
+    .popup-content{
+        width: 300px;
+    }
+    .popup img{
+        width: 60px;
+        height: 60px;
+    }
+    .image-label, .link-label {
+        font-size: 12px;
+    }
+    .btn-add-link{
+        padding: 5%;
+    }
+  }
+
+.favorite-btn {
+    padding: 5px 10px;
+    background-color: #f44336; /* Rot für "Entfernen" */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: white;
+}
+
+.favorite-btn:hover {
+    background-color: #d32f2f; /* Dunkleres Rot bei Hover */
+}
+
+.favorite-btn.disabled {
+    background-color: #d3d3d3; /* Grau für deaktivierte Buttons */
+    cursor: not-allowed;
+    color: #777;
+}
+
+.favorite-btn.disabled:hover {
+    background-color: #d3d3d3; /* Keine Änderung bei Hover */
+}
+
+/* Hintergrund- und Textfarben im Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Popup-Fenster im Dark Mode */
+body.dark-mode .popup-content {
+    background-color: #222;
+    color: #fff;
+}
+
+/* Beispiel: Links im Dark Mode */
+body.dark-mode a {
+    color: #ffa726;
+}
+
+/* Navigationsleiste im Dark Mode */
+body.dark-mode .nav {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode p{
+    color: #dbdbdb;
+}
+
+body.dark-mode .clickable-image{
+    filter: invert(0.4) brightness(2);
+}
+body.dark-mode .link-image{
+    filter: invert(0.4) brightness(2);
+}
+
+body.dark-mode .turn_dark{
+    width: 50px;
+    padding-bottom: 3px;
+}
