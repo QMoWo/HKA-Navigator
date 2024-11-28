@@ -141,8 +141,8 @@ body{
   }
 
 .main-images img{
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     margin: 10px;
     /* background-color: brown; */
@@ -271,9 +271,9 @@ body{
     .image-label, .link-label {
         font-size: 12px;
     }
-    .btn-add-link{
+    /* .btn-add-link{
         padding: 5%;
-    }
+    } */
     /* .login_Button{
         padding: 0px;
         padding-right: 30px;
@@ -340,4 +340,8 @@ body.dark-mode .link-image{
 body.dark-mode .turn_dark{
     width: 50px;
     padding-bottom: 3px;
+}
+
+body.dark-mode .login_Button{
+    background-color: transparent;
 }
