@@ -309,6 +309,39 @@ body{
     background-color: #d3d3d3; /* Keine Änderung bei Hover */
 }
 
+/* Container für "Eigene Links" */
+#own-links-container .link-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#own-links-container .link-wrapper img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    /* background-color: #cc0000; */
+    cursor: pointer;
+}
+
+#own-links-container .link-wrapper .link-label {
+    flex-grow: 1;
+    font-size: 16px;
+}
+
+#own-links-container .link-wrapper .remove-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#own-links-container .link-wrapper .remove-btn:hover {
+    background-color: #cc0000;
+}
+
 /* Hintergrund- und Textfarben im Dark Mode */
 body.dark-mode {
     background-color: #121212;

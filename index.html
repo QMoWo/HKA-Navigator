@@ -59,7 +59,7 @@
                         <p class="image-label">Favoriten</p>
                     </div>
                     <div class="image-wrapper">
-                        <img src="assets/folder-plus-solid.svg" alt="Image8" class="clickable-image" onclick="openPopup('popup-own-links')">
+                        <img src="assets/folder-plus-solid.svg" alt="Image8" class="clickable-image" onclick="openPopup('popup8')">
                         <p class="image-label">Eigene Links</p>
                     </div>
                     <!-- Add more images as needed-->
@@ -222,7 +222,6 @@
                 <div class="popup-content">
                     <span class="close-button" onclick="closePopup('popup7')">&times;</span>
                     <div class="link-wrapper">
-                        <div class="own-links-container"></div>
                         <!-- <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
                         <p class="link-label">Stundenplan</p> -->
                     </div>
@@ -230,13 +229,14 @@
                 </div>
              </div>
              <!-- Popup für "eigene Links" -->
-             <div id="popup-own-links" class="popup">
+             <div id="popup8" class="popup">
                 <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup-own-links')">&times;</span>
-                    <div class="link-wrapper">
-                        <!-- <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
-                        <p class="link-label">Stundenplan</p> -->
-                    </div>
+                    <span class="close-button" onclick="closePopup('popup8')">&times;</span>
+                    <!-- <div class="link-wrapper">
+                        <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
+                        <p class="link-label">Stundenplan</p>
+                    </div> -->
+                    <div id="own-links-container"></div>
                     <!-- Add more link images as needed-->
                 </div>
              </div>
