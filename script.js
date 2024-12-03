@@ -135,8 +135,69 @@ function loadFavorites() {
   });
 }
 
-// Beim Laden der Seite Favoriten aus dem lokalen Speicher laden
-window.onload = loadFavorites;
+function addLink() {
+  const nameInput = document.querySelector('.link-name');
+  const urlInput = document.querySelector('.link-url');
+  const name = nameInput.value.trim();
+  const url = urlInput.value.trim();
 
-// Beim Schließen der Seite Favoriten speichern
-window.addEventListener('beforeunload', saveFavorites);
+  if (name && url) {
+      const storedLinks = JSON.parse(localStorage.getItem('ownLinks')) || [];
+      const newLink = { name, url };
+      storedLinks.push(newLink);
+      localStorage.setItem('ownLinks', JSON.stringify(storedLinks));
+
+      displayOwnLinks();
+      nameInput.value = '';
+      urlInput.value = '';
+  } else {
+      alert('Bitte sowohl Name als auch URL eingeben.');
+  }
+}
+
+function displayOwnLinks() {
+  const container = document.getElementById('own-links-container');
+  const storedLinks = JSON.parse(localStorage.getItem('ownLinks')) || [];
+  container.innerHTML = ''; // Vorherige Inhalte entfernen
+
+  storedLinks.forEach((link, index) => {
+      const linkElement = document.createElement('div');
+      linkElement.classList.add('link-wrapper');
+
+      linkElement.innerHTML = `
+          <img src="assets/plus-solid.svg" alt="${link.name}" class="link-image" onclick="window.open('${link.url}')">
+          <p class="link-label">${link.name}</p>
+          <button class="remove-btn" onclick="removeOwnLink(${index})">Entfernen</button>
+      `;
+
+      container.appendChild(linkElement);
+  });
+}
+
+function removeOwnLink(index) {
+  const storedLinks = JSON.parse(localStorage.getItem('ownLinks'));
+  storedLinks.splice(index, 1);
+  localStorage.setItem('ownLinks', JSON.stringify(storedLinks));
+  displayOwnLinks();
+}
+
+// // Beim Laden der Seite Favoriten aus dem lokalen Speicher laden
+// window.onload = loadFavorites;
+
+// // Beim Laden der Seite "Eigene Links" aus dem lokalen Speicher laden
+// window.onload = function () {
+//   displayOwnLinks();
+// };
+
+// Beim Laden der Seite alle Daten laden
+window.onload = function () {
+  displayOwnLinks();
+  loadFavorites(); // Falls Favoriten separat verwaltet werden
+};
+
+// Beim Schließen der Seite Synchronisation sicherstellen
+window.addEventListener('beforeunload', () => {
+  saveFavorites(); // Favoriten speichern
+  const storedLinks = JSON.parse(localStorage.getItem('ownLinks')) || [];
+  localStorage.setItem('ownLinks', JSON.stringify(storedLinks));
+});

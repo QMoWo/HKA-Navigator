@@ -1,4 +1,4 @@
-# Ideen zur HKA Linksverwaltung
+x# Ideen zur HKA Linksverwaltung
 In dem Dokument kommen ein paar Ideen zur Verbeserung an die Linkverwaltungswebsite.
 Da ich ziemlich neu im dem Bereich bin, d.h. zum 1.Mal JavaScript und eingerostetes HTML und CSS benütze, sind viele Ideen noch relativ Utopisch und nicht bei
 meinem derzeitigen Wissensstand erreichbar
@@ -45,3 +45,13 @@ Ben + Ferdi: Handlungsempfehlung + Graphen im Bereich Sport und Events
 Achim Kommunikationsmedium Handlungsempfehlungen
 
 Präsentationsstruktur:
+
+"Sammelstelle"
+Prozentzahlen anstatt absolute Zahlen
+Grafiken verdichten/verbessern (Zahlen nach rechts)
+Mehrfachantworten Verbessern
+HKA-App nur ankratzen
+Mattermost: Integration in komplette IWI fakultät
+Datum ändern
+Grafiken sollen selbsterklärend sein
+Zufriedenheit und Wichtigkeit entfernen
