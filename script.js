@@ -241,7 +241,6 @@ function addEvent() {
       events.push({ title, date });
       localStorage.setItem("events", JSON.stringify(events));
       renderCalendar();
-      alert("Termin hinzugefügt!");
   } else {
       alert("Bitte Titel und Datum eingeben.");
   }

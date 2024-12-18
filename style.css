@@ -503,3 +503,46 @@ body.dark-mode .link-image{
 body.dark-mode .login_Button{
     background-color: transparent;
 }
+
+/* Dark Mode Anpassungen für den Kalender */
+body.dark-mode .calendar-container {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode .event-form input,
+body.dark-mode .event-form button {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode .event-form button {
+    background-color: #666;
+}
+
+body.dark-mode .event-form button:hover {
+    background-color: #555;
+}
+
+body.dark-mode .event-item {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+body.dark-mode .event-item button {
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+body.dark-mode .event-item button:hover {
+    background-color: #555;
+}
