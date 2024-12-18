@@ -13,12 +13,15 @@ function openPopup(id) {
     }
   }
 
-document.querySelector(".darkmode img").addEventListener("click", () => {
+const events = JSON.parse(localStorage.getItem("events")) || [];
+
+// Darkmode Umschalten
+document.querySelector(".ui-switch input").addEventListener("change", (event) => {
   const body = document.body;
   const darkModeIcon = document.querySelector(".darkmode img");
 
   // Umschalten des Dark Modes
-  body.classList.toggle("dark-mode");
+  body.classList.toggle("dark-mode", event.target.checked);
 
   // Bild wechseln
   if (body.classList.contains("dark-mode")) {
@@ -28,6 +31,9 @@ document.querySelector(".darkmode img").addEventListener("click", () => {
       darkModeIcon.src = "assets/moon-solid.svg"; // Bild für den "Dunkelmodus"
       darkModeIcon.alt = "darkmode_logo";
   }
+
+  // Status im localStorage speichern
+  localStorage.setItem("darkMode", event.target.checked);
 });
 
 // Dark Mode Status beim Laden prüfen
@@ -35,20 +41,57 @@ window.addEventListener("load", () => {
   const isDarkMode = localStorage.getItem("darkMode") === "true";
   const body = document.body;
   const darkModeIcon = document.querySelector(".darkmode img");
+  const slider = document.querySelector(".ui-switch input");
 
   if (isDarkMode) {
       body.classList.add("dark-mode");
+      slider.checked = true;
       darkModeIcon.src = "assets/sun-regular (1).svg";
       darkModeIcon.alt = "lightmode_logo";
+  } else {
+      slider.checked = false;
+      darkModeIcon.src = "assets/moon-solid.svg";
+      darkModeIcon.alt = "darkmode_logo";
   }
 });
 
-// Status im localStorage speichern
-document.querySelector(".darkmode img").addEventListener("click", () => {
-  const body = document.body;
-  const isDarkMode = body.classList.contains("dark-mode");
-  localStorage.setItem("darkMode", isDarkMode);
-});
+
+// document.querySelector(".darkmode img").addEventListener("click", () => {
+//   const body = document.body;
+//   const darkModeIcon = document.querySelector(".darkmode img");
+
+//   // Umschalten des Dark Modes
+//   body.classList.toggle("dark-mode");
+
+//   // Bild wechseln
+//   if (body.classList.contains("dark-mode")) {
+//       darkModeIcon.src = "assets/sun-regular (1).svg"; // Bild für den "Lichtmodus"
+//       darkModeIcon.alt = "lightmode_logo";
+//   } else {
+//       darkModeIcon.src = "assets/moon-solid.svg"; // Bild für den "Dunkelmodus"
+//       darkModeIcon.alt = "darkmode_logo";
+//   }
+// });
+
+// // Dark Mode Status beim Laden prüfen
+// window.addEventListener("load", () => {
+//   const isDarkMode = localStorage.getItem("darkMode") === "true";
+//   const body = document.body;
+//   const darkModeIcon = document.querySelector(".darkmode img");
+
+//   if (isDarkMode) {
+//       body.classList.add("dark-mode");
+//       darkModeIcon.src = "assets/sun-regular (1).svg";
+//       darkModeIcon.alt = "lightmode_logo";
+//   }
+// });
+
+// // Status im localStorage speichern
+// document.querySelector(".darkmode img").addEventListener("click", () => {
+//   const body = document.body;
+//   const isDarkMode = body.classList.contains("dark-mode");
+//   localStorage.setItem("darkMode", isDarkMode);
+// });
 
 function addToFavorites(button) {
   const linkWrapper = button.parentElement;
@@ -189,10 +232,57 @@ function removeOwnLink(index) {
 //   displayOwnLinks();
 // };
 
+// Funktion, um einen neuen Termin hinzuzufügen
+function addEvent() {
+  const title = document.getElementById("event-title").value.trim();
+  const date = document.getElementById("event-date").value;
+
+  if (title && date) {
+      events.push({ title, date });
+      localStorage.setItem("events", JSON.stringify(events));
+      renderCalendar();
+      alert("Termin hinzugefügt!");
+  } else {
+      alert("Bitte Titel und Datum eingeben.");
+  }
+}
+
+// Kalender-Rendering
+function renderCalendar() {
+  const calendar = document.getElementById("calendar");
+  calendar.innerHTML = ""; // Clear previous content
+
+  const today = new Date().toISOString().split("T")[0];
+  const sortedEvents = events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  sortedEvents.forEach(event => {
+      const eventElement = document.createElement("div");
+      eventElement.classList.add("event-item");
+
+      eventElement.innerHTML = `
+          <strong>${event.date === today ? "Heute:" : event.date}</strong> - ${event.title}
+          <button onclick="removeEvent('${event.date}', '${event.title}')">Entfernen</button>
+      `;
+
+      calendar.appendChild(eventElement);
+  });
+}
+
+// Termin entfernen
+function removeEvent(date, title) {
+  const index = events.findIndex(event => event.date === date && event.title === title);
+  if (index > -1) {
+      events.splice(index, 1);
+      localStorage.setItem("events", JSON.stringify(events));
+      renderCalendar();
+  }
+}
+
 // Beim Laden der Seite alle Daten laden
 window.onload = function () {
   displayOwnLinks();
   loadFavorites(); // Falls Favoriten separat verwaltet werden
+  renderCalendar();
 };
 
 // Beim Schließen der Seite Synchronisation sicherstellen

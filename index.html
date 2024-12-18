@@ -16,14 +16,35 @@
             </div>
             <div class="right">
                 <div class="darkmode">
-                    <img src="assets/moon-solid.svg" alt="darkmode_logo" class="turn_dark">
+                    <label class="ui-switch">
+                        <input type="checkbox">
+                        <div class="turn_dark_slider">
+                          <div class="circle"></div>
+                        </div>
+                      </label>
+                    <!-- <img src="assets/moon-solid.svg" alt="darkmode_logo" class="turn_dark"> -->
                 </div>
                 <button class="login_Button", onclick="openPopup('popup_login')">LogIn</button>
             </div>
         </div>
         <div class="container">
             <div class="logo_class">
-                <img src="assets/Hochschule-Karlsruhe-Emblem-700x394.png" alt="Logo" class="logo" onclick="window.open('https://www.h-ka.de/')">
+                <!-- Video wird zuerst angezeigt
+                <video id="logoVideo" class="logo" autoplay muted playsinline>
+                    <source src="assets/HKA_Logo_Animation_mp4.mp4" type="video/mp4">
+                    Ihr Browser unterstützt keine Videos.
+                </video> -->
+                <!-- Das ursprüngliche Logo wird nach dem Video sichtbar -->
+                <img id="logoImage" src="assets/Hochschule-Karlsruhe-Emblem-700x394.png" alt="Logo" class="logo fade-in" onclick="window.open('https://www.h-ka.de/')">
+                <!-- <script>
+                    // Wenn das Video zu Ende ist, das Bild anzeigen
+                    document.getElementById("logoVideo").addEventListener("ended", () => {
+                        const video = document.getElementById("logoVideo");
+                        const image = document.getElementById("logoImage");
+                        video.style.display = "none"; // Versteckt das Video
+                        image.style.display = "block"; // Zeigt das Bild
+                    });
+                </script> -->
             </div>
             <div class="searchbar">
                 <input type="text" class="searching" placeholder="Suchen..." oninput="filterLinks()">
@@ -69,6 +90,18 @@
                 <input type="text" class="link-name" placeholder="Link Name">
                 <input type="text" class="link-url" placeholder="Link URL">
                 <button class="btn-add-link" onclick="addLink()">Hinzufügen</button>
+            </div>
+
+            <div class="calendar-container">
+                <div class="calendar-view">
+                    <div id="calendar"></div>
+                </div>
+                <div class="event-form">
+                    <h3>Termin hinzufügen</h3>
+                    <input type="text" id="event-title" placeholder="Titel">
+                    <input type="date" id="event-date">
+                    <button onclick="addEvent()">Hinzufügen</button>
+                </div>
             </div>
 
             <!-- Popup Window-->
@@ -253,7 +286,7 @@
                     </div>
                 </div>
              </div>
-             <div class="footer">
+             <!-- <div class="footer">
                 <div class="left">
     
                 </div>
@@ -263,7 +296,7 @@
                 <div class="right">
                     
                 </div>
-             </div>
+             </div> -->
         </div>
 
         <script src="script.js"></script>
