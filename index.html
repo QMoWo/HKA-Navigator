@@ -22,283 +22,291 @@
                           <div class="circle"></div>
                         </div>
                       </label>
-                    <!-- <img src="assets/moon-solid.svg" alt="darkmode_logo" class="turn_dark"> -->
                 </div>
-                <button class="login_Button", onclick="openPopup('popup_login')">LogIn</button>
+                <!-- <button class="login_Button", onclick="openPopup('popup_login')">Login</button> -->
             </div>
         </div>
-        <div class="container">
-            <div class="logo_class">
-                <!-- Video wird zuerst angezeigt
-                <video id="logoVideo" class="logo" autoplay muted playsinline>
-                    <source src="assets/HKA_Logo_Animation_mp4.mp4" type="video/mp4">
-                    Ihr Browser unterstützt keine Videos.
-                </video> -->
-                <!-- Das ursprüngliche Logo wird nach dem Video sichtbar -->
-                <img id="logoImage" src="assets/Hochschule-Karlsruhe-Emblem-700x394.png" alt="Logo" class="logo fade-in" onclick="window.open('https://www.h-ka.de/')">
-                <!-- <script>
-                    // Wenn das Video zu Ende ist, das Bild anzeigen
-                    document.getElementById("logoVideo").addEventListener("ended", () => {
-                        const video = document.getElementById("logoVideo");
-                        const image = document.getElementById("logoImage");
-                        video.style.display = "none"; // Versteckt das Video
-                        image.style.display = "block"; // Zeigt das Bild
-                    });
-                </script> -->
-            </div>
-            <div class="searchbar">
-                <input type="text" class="searching" placeholder="Suchen..." oninput="filterLinks()">
-            </div>
-            <div class="image_container">
-                <div class="main-images">
-                    <div class="image-wrapper">
-                        <img src="assets/kalender.png" alt="Image1" class="clickable-image" onclick="openPopup('popup1')">
-                        <p class="image-label">kalender/Termine</p>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="assets/kommentar-alt.png" alt="Image2" class="clickable-image" onclick="openPopup('popup2')">
-                        <p class="image-label">Messages/Files</p>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="assets/anchor-solid.svg" alt="Image3" class="clickable-image" onclick="openPopup('popup3')">
-                        <p class="image-label">Ersti-Infos</p>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="assets/circle-info-solid.svg" alt="Image4" class="clickable-image" onclick="openPopup('popup4')">
-                        <p class="image-label">Allgemein</p>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="assets/graduation-cap-solid.svg" alt="Image5" class="clickable-image" onclick="openPopup('popup5')">
-                        <p class="image-label">Prüfungsinfo</p>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="assets/unlock-keyhole-solid.svg" alt="Image6" class="clickable-image" onclick="openPopup('popup6')">
-                        <p class="image-label">2 Faktor</p>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="assets/star-solid.svg" alt="Image7" class="clickable-image" onclick="openPopup('popup7')">
-                        <p class="image-label">Favoriten</p>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="assets/folder-plus-solid.svg" alt="Image8" class="clickable-image" onclick="openPopup('popup8')">
-                        <p class="image-label">Eigene Links</p>
-                    </div>
-                    <!-- Add more images as needed-->
+        <div class="flexbox">
+            <div class="container">
+                <!-- ! Kalender Feature -->
+                <!-- <span class="close-button toggle" onclick="toggle()">&times;</span> -->
+                <!-- ! Kalender Feature -->
+                <div class="logo_class">
+                    <!-- Video wird zuerst angezeigt
+                    <video id="logoVideo" class="logo" autoplay muted playsinline>
+                        <source src="assets/HKA_Logo_Animation_mp4.mp4" type="video/mp4">
+                        Ihr Browser unterstützt keine Videos.
+                    </video> -->
+                    <!-- Das ursprüngliche Logo wird nach dem Video sichtbar -->
+                    <img id="logoImage" src="assets/Hochschule-Karlsruhe-Emblem-700x394.png" alt="Logo" class="logo fade-in" onclick="window.open('https://www.h-ka.de/')">
+                    <!-- <script>
+                        // Wenn das Video zu Ende ist, das Bild anzeigen
+                        document.getElementById("logoVideo").addEventListener("ended", () => {
+                            const video = document.getElementById("logoVideo");
+                            const image = document.getElementById("logoImage");
+                            video.style.display = "none"; // Versteckt das Video
+                            image.style.display = "block"; // Zeigt das Bild
+                        });
+                    </script> -->
                 </div>
-            </div>
-            <div class="add-link">
-                <input type="text" class="link-name" placeholder="Link Name">
-                <input type="text" class="link-url" placeholder="Link URL">
-                <button class="btn-add-link" onclick="addLink()">Hinzufügen</button>
-            </div>
-
-            <div class="calendar-container">
-                <div class="calendar-view">
-                    <div id="calendar"></div>
-                </div>
-                <div class="event-form">
-                    <h3>Termin hinzufügen</h3>
-                    <input type="text" id="event-title" placeholder="Titel">
-                    <input type="date" id="event-date">
-                    <button onclick="addEvent()">Hinzufügen</button>
-                </div>
-            </div>
-
-            <!-- Popup Window-->
-             <div id="popup1" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup1')">&times;</span>
-                    <div class="link-wrapper">
-                        <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
-                        <p class="link-label">Stundenplan</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/list-solid.svg" alt="Link2" class="link-image" onclick="window.open('https://www.h-ka.de/terminkalender')">
-                        <p class="link-label">HKA Terminkalender</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <!-- Add more link images as needed-->
-                </div>
-             </div>
-             <div id="popup2" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup2')">&times;</span>
-                    <div class="link-wrapper">
-                        <img src="assets/mattermost-logo.svg" alt="Link3" class="link-image" onclick="window.open('https://mattermost.hska-iwi.de/data-science/channels/town-square')">
-                        <p class="link-label">Mattermost</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/envelope-solid.svg" alt="Link4" class="link-image" onclick="window.open('https://owa.h-ka.de/lm_auth_proxy?DoLMLogin?curl=L2fowaL2f&curlid=115308505-489588693&curlmode=0#path=/mail')">
-                        <p class="link-label">Webmail</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/book-open-solid.svg" alt="Link4" class="link-image" onclick="window.open('https://ilias.h-ka.de/')">
-                        <p class="link-label">Ilias</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <!-- Add more link images as needed-->
-                </div>
-             </div>
-             <div id="popup3" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup3')">&times;</span>
-                    <div class="link-wrapper">
-                        <img src="assets/people-group-solid.svg" alt="Link19" class="link-image" onclick="window.open('https://iwi-hka.de')">
-                        <p class="link-label">IWI-Fachschaft</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/address-card-solid.svg" alt="Link5" class="link-image" onclick="window.open('https://iwi-hka.de/assets/downloads/ophase/vorstellung/Vorstellung_Fachschaft.pdf')">
-                        <p class="link-label">Vorstellung</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/readme-brands-solid.svg" alt="Link6" class="link-image" onclick="window.open('https://iwi-hka.de/assets/downloads/ophase/po-briefing/PO-Briefing_WIIB_IIBB_DSCB.pdf')">
-                        <p class="link-label">Studium Aufbau</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/wifi-solid.svg" alt="Link7" class="link-image" onclick="window.open('https://iwi-hka.de/assets/downloads/rz_einfuehrung_wi_dsc_iib_ss_2023.pdf')">
-                        <p class="link-label">WLan</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/place-of-worship-solid.svg" alt="Link8" class="link-image" onclick="window.open('https://www.h-ka.de/fileadmin/Hochschule_Karlsruhe_HKA/Informationsmaterialien/HKA_Lageplan_A4.pdf')">
-                        <p class="link-label">Points of Interest</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <!-- Add more link images as needed-->
-                </div>
-             </div>
-             <div id="popup4" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup4')">&times;</span>
-                    <div class="link-wrapper">
-                        <img src="assets/train-solid.svg" alt="Link9" class="link-image" onclick="window.open('https://www.kvv.de/')">
-                        <p class="link-label">Bahnverbindung</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/basketball-solid.svg" alt="Link10" class="link-image" onclick="window.open('https://www.ifss.kit.edu/hochschulsport/sportangebot.php')">
-                        <p class="link-label">Hochschulsport</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/utensils-solid.svg" alt="Link11" class="link-image" onclick="window.open('https://www.sw-ka.de/de/hochschulgastronomie/speiseplan/mensa_moltke/')">
-                        <p class="link-label">Essen</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/language-solid.svg" alt="Link12" class="link-image" onclick="window.open('https://www.h-ka.de/ifs')">
-                        <p class="link-label">Fremdsprache</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/kickstarter-k-brands-solid.svg" alt="Link18" class="link-image" onclick="window.open('https://www.sw-ka.de/de/')">
-                        <p class="link-label">Studierendenwerk</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/school-solid.svg" alt="Link20" class="link-image" onclick="window.open('https://www.h-ka.de/studiumgenerale/profil')">
-                        <p class="link-label">Studium Generale</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <!-- Add more link images as needed-->
-                </div>
-             </div>
-             <div id="popup5" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup5')">&times;</span>
-                    <div class="link-wrapper">
-                        <img src="assets/user-graduate-solid.svg" alt="Link13" class="link-image" onclick="window.open('https://rz.h-ka.de/slv')">
-                        <p class="link-label">Prüfungsanmeldung</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/file-solid.svg" alt="Link21" class="link-image" onclick="window.open('https://ilias.h-ka.de/ilias.php?ref_id=842697&cmdClass=ilrepositorygui&cmdNode=y0&baseClass=ilrepositorygui')">
-                        <p class="link-label">Thesisanmeldung</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/euro-sign-solid.svg" alt="Link17" class="link-image" onclick="window.open('https://hisinone.extern-hs-karlsruhe.de/qisserver/pages/cs/sys/portal/hisinoneStartPage.faces')">
-                        <p class="link-label">Studienbeitrag</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <!-- Add more link images as needed-->
-                </div>
-             </div>
-             <div id="popup6" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup6')">&times;</span>
-                    <div class="link-wrapper">
-                        <img src="assets/mobile-screen-button-solid.svg" alt="Link14" class="link-image" onclick="window.open('https://ilias.h-ka.de/goto.php?target=file_869008_download&client_id=HSKA')">
-                        <p class="link-label">Für Smartphones</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/desktop-solid.svg" alt="Link15" class="link-image" onclick="window.open('https://ilias.h-ka.de/goto.php?target=file_869009_download&client_id=HSKA')">
-                        <p class="link-label">Für Desktop/Laptop</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <img src="assets/server-solid.svg" alt="Link16" class="link-image" onclick="confirmAndOpen('https://mfa.h-ka.de/')">
-                        <p class="link-label">Registrierung</p>
-                        <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
-                    </div>
-                    <!-- Add more link images as needed-->
-                </div>
-             </div>
-             <div id="popup7" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup7')">&times;</span>
-                    <div class="link-wrapper">
-                        <!-- <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
-                        <p class="link-label">Stundenplan</p> -->
-                    </div>
-                    <!-- Add more link images as needed-->
-                </div>
-             </div>
-             <!-- Popup für "eigene Links" -->
-             <div id="popup8" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup8')">&times;</span>
-                    <!-- <div class="link-wrapper">
-                        <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
-                        <p class="link-label">Stundenplan</p>
-                    </div> -->
-                    <div id="own-links-container"></div>
-                    <!-- Add more link images as needed-->
-                </div>
-             </div>
-             <div id="popup_login" class="popup">
-                <div class="popup-content">
-                    <span class="close-button" onclick="closePopup('popup_login')">&times;</span>
-                    <div class="username">
-                        Username: 
-                        <input type="text" class="userID" name="uname">
-                    </div>
-                    <div class="password">
-                        Password: 
-                        <input type="text" class="passID" name="pname">
+                <!-- <div class="searchbar">
+                    <input type="text" class="searching" placeholder="Suchen..." oninput="filterLinks()">
+                </div> -->
+                <div class="image_container">
+                    <div class="main-images">
+                        <div class="image-wrapper">
+                            <img src="assets/kalender.png" alt="Image1" class="clickable-image" onclick="openPopup('popup1')">
+                            <p class="image-label">kalender/Termine</p>
+                        </div>
+                        <div class="image-wrapper">
+                            <img src="assets/kommentar-alt.png" alt="Image2" class="clickable-image" onclick="openPopup('popup2')">
+                            <p class="image-label">Messages/Files</p>
+                        </div>
+                        <div class="image-wrapper">
+                            <img src="assets/anchor-solid.svg" alt="Image3" class="clickable-image" onclick="openPopup('popup3')">
+                            <p class="image-label">Ersti-Infos</p>
+                        </div>
+                        <div class="image-wrapper">
+                            <img src="assets/circle-info-solid.svg" alt="Image4" class="clickable-image" onclick="openPopup('popup4')">
+                            <p class="image-label">Allgemein</p>
+                        </div>
+                        <div class="image-wrapper">
+                            <img src="assets/graduation-cap-solid.svg" alt="Image5" class="clickable-image" onclick="openPopup('popup5')">
+                            <p class="image-label">Prüfungsinfo</p>
+                        </div>
+                        <div class="image-wrapper">
+                            <img src="assets/unlock-keyhole-solid.svg" alt="Image6" class="clickable-image" onclick="openPopup('popup6')">
+                            <p class="image-label">2 Faktor</p>
+                        </div>
+                        <div class="image-wrapper">
+                            <img src="assets/star-solid.svg" alt="Image7" class="clickable-image" onclick="openPopup('popup7')">
+                            <p class="image-label">Favoriten</p>
+                        </div>
+                        <div class="image-wrapper">
+                            <img src="assets/folder-plus-solid.svg" alt="Image8" class="clickable-image" onclick="openPopup('popup8')">
+                            <p class="image-label">Eigene Links</p>
+                        </div>
+                        <!-- Add more images as needed-->
                     </div>
                 </div>
-             </div>
-             <!-- <div class="footer">
-                <div class="left">
+                <div class="add-link">
+                    <input type="text" class="link-name" placeholder="Link Name">
+                    <input type="text" class="link-url" placeholder="Link URL">
+                    <button class="btn-add-link" onclick="addLink()">Hinzufügen</button>
+                </div>
     
+                
+    
+                <!-- Popup Window-->
+                 <div id="popup1" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup1')">&times;</span>
+                        <div class="link-wrapper">
+                            <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
+                            <p class="link-label">Stundenplan</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/list-solid.svg" alt="Link2" class="link-image" onclick="window.open('https://www.h-ka.de/terminkalender')">
+                            <p class="link-label">HKA Terminkalender</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+                 <div id="popup2" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup2')">&times;</span>
+                        <div class="link-wrapper">
+                            <img src="assets/mattermost-logo.svg" alt="Link3" class="link-image" onclick="window.open('https://mattermost.hska-iwi.de/data-science/channels/town-square')">
+                            <p class="link-label">Mattermost</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/envelope-solid.svg" alt="Link4" class="link-image" onclick="window.open('https://owa.h-ka.de/lm_auth_proxy?DoLMLogin?curl=L2fowaL2f&curlid=115308505-489588693&curlmode=0#path=/mail')">
+                            <p class="link-label">Webmail</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/book-open-solid.svg" alt="Link4" class="link-image" onclick="window.open('https://ilias.h-ka.de/')">
+                            <p class="link-label">Ilias</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+                 <div id="popup3" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup3')">&times;</span>
+                        <div class="link-wrapper">
+                            <img src="assets/people-group-solid.svg" alt="Link19" class="link-image" onclick="window.open('https://iwi-hka.de')">
+                            <p class="link-label">IWI-Fachschaft</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/address-card-solid.svg" alt="Link5" class="link-image" onclick="window.open('https://iwi-hka.de/assets/downloads/ophase/vorstellung/Vorstellung_Fachschaft.pdf')">
+                            <p class="link-label">Vorstellung</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/readme-brands-solid.svg" alt="Link6" class="link-image" onclick="window.open('https://iwi-hka.de/assets/downloads/ophase/po-briefing/PO-Briefing_WIIB_IIBB_DSCB.pdf')">
+                            <p class="link-label">Studium Aufbau</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/wifi-solid.svg" alt="Link7" class="link-image" onclick="window.open('https://iwi-hka.de/assets/downloads/rz_einfuehrung_wi_dsc_iib_ss_2023.pdf')">
+                            <p class="link-label">WLan</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/place-of-worship-solid.svg" alt="Link8" class="link-image" onclick="window.open('https://www.h-ka.de/fileadmin/Hochschule_Karlsruhe_HKA/Informationsmaterialien/HKA_Lageplan_A4.pdf')">
+                            <p class="link-label">Points of Interest</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+                 <div id="popup4" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup4')">&times;</span>
+                        <div class="link-wrapper">
+                            <img src="assets/train-solid.svg" alt="Link9" class="link-image" onclick="window.open('https://www.kvv.de/')">
+                            <p class="link-label">Bahnverbindung</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/basketball-solid.svg" alt="Link10" class="link-image" onclick="window.open('https://www.ifss.kit.edu/hochschulsport/sportangebot.php')">
+                            <p class="link-label">Hochschulsport</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/utensils-solid.svg" alt="Link11" class="link-image" onclick="window.open('https://www.sw-ka.de/de/hochschulgastronomie/speiseplan/mensa_moltke/')">
+                            <p class="link-label">Essen</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/language-solid.svg" alt="Link12" class="link-image" onclick="window.open('https://www.h-ka.de/ifs')">
+                            <p class="link-label">Fremdsprache</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/kickstarter-k-brands-solid.svg" alt="Link18" class="link-image" onclick="window.open('https://www.sw-ka.de/de/')">
+                            <p class="link-label">Studierendenwerk</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/school-solid.svg" alt="Link20" class="link-image" onclick="window.open('https://www.h-ka.de/studiumgenerale/profil')">
+                            <p class="link-label">Studium Generale</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+                 <div id="popup5" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup5')">&times;</span>
+                        <div class="link-wrapper">
+                            <img src="assets/user-graduate-solid.svg" alt="Link13" class="link-image" onclick="window.open('https://rz.h-ka.de/slv')">
+                            <p class="link-label">Prüfungsanmeldung</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/file-solid.svg" alt="Link21" class="link-image" onclick="window.open('https://ilias.h-ka.de/ilias.php?ref_id=842697&cmdClass=ilrepositorygui&cmdNode=y0&baseClass=ilrepositorygui')">
+                            <p class="link-label">Thesisanmeldung</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/euro-sign-solid.svg" alt="Link17" class="link-image" onclick="window.open('https://hisinone.extern-hs-karlsruhe.de/qisserver/pages/cs/sys/portal/hisinoneStartPage.faces')">
+                            <p class="link-label">Studienbeitrag</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+                 <div id="popup6" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup6')">&times;</span>
+                        <div class="link-wrapper">
+                            <img src="assets/mobile-screen-button-solid.svg" alt="Link14" class="link-image" onclick="window.open('https://ilias.h-ka.de/goto.php?target=file_869008_download&client_id=HSKA')">
+                            <p class="link-label">Für Smartphones</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/desktop-solid.svg" alt="Link15" class="link-image" onclick="window.open('https://ilias.h-ka.de/goto.php?target=file_869009_download&client_id=HSKA')">
+                            <p class="link-label">Für Desktop/Laptop</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <div class="link-wrapper">
+                            <img src="assets/server-solid.svg" alt="Link16" class="link-image" onclick="confirmAndOpen('https://mfa.h-ka.de/')">
+                            <p class="link-label">Registrierung</p>
+                            <button class="favorite-btn" onclick="addToFavorites(this)">Favorisieren</button>
+                        </div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+                 <div id="popup7" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup7')">&times;</span>
+                        <div class="link-wrapper">
+                            <!-- <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
+                            <p class="link-label">Stundenplan</p> -->
+                        </div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+                 <!-- Popup für "eigene Links" -->
+                 <div id="popup8" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup8')">&times;</span>
+                        <!-- <div class="link-wrapper">
+                            <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
+                            <p class="link-label">Stundenplan</p>
+                        </div> -->
+                        <div id="own-links-container"></div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+                 <div id="popup_login" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup_login')">&times;</span>
+                        <div class="username">
+                            Username: 
+                            <input type="text" class="userID" name="uname">
+                        </div>
+                        <div class="password">
+                            Password: 
+                            <input type="text" class="passID" name="pname">
+                        </div>
+                    </div>
+                 </div>
                 </div>
-                <div class="middle">
-                    Impressum
-                </div>
-                <div class="right">
-                    
-                </div>
-             </div> -->
-        </div>
+                <!-- ! Kalender Feature -->
+                <!-- <div class="calendar-container" id="calendar-container">
+                    <div class="calendar-view">
+                        <div id="calendar"></div>
+                    </div>
+                    <div class="event-form">
+                        <h3>Termin hinzufügen</h3>
+                        <input type="text" id="event-title" placeholder="Titel">
+                        <input type="date" id="event-date">
+                        <button onclick="addEvent()">Hinzufügen</button>
+                    </div>
+                </div> -->
+                <!-- ! Kalender Feature -->
 
+        </div>
+            
+            <!-- <div class="footer">
+               <div class="left">
+   
+               </div>
+               <div class="middle">
+                   Impressum
+               </div>
+               <div class="right">
+                   
+               </div>
+            </div> -->
         <script src="script.js"></script>
     </body>
 </html>

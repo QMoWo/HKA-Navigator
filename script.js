@@ -43,16 +43,16 @@ window.addEventListener("load", () => {
   const darkModeIcon = document.querySelector(".darkmode img");
   const slider = document.querySelector(".ui-switch input");
 
-  if (isDarkMode) {
-      body.classList.add("dark-mode");
-      slider.checked = true;
-      darkModeIcon.src = "assets/sun-regular (1).svg";
-      darkModeIcon.alt = "lightmode_logo";
-  } else {
-      slider.checked = false;
-      darkModeIcon.src = "assets/moon-solid.svg";
-      darkModeIcon.alt = "darkmode_logo";
-  }
+  // if (isDarkMode) {
+  //     body.classList.add("dark-mode");
+  //     slider.checked = true;
+  //     darkModeIcon.src = "assets/sun-regular (1).svg";
+  //     darkModeIcon.alt = "lightmode_logo";
+  // } else {
+  //     slider.checked = false;
+  //     darkModeIcon.src = "assets/moon-solid.svg";
+  //     darkModeIcon.alt = "darkmode_logo";
+  // }
 });
 
 
@@ -275,6 +275,11 @@ function removeEvent(date, title) {
       localStorage.setItem("events", JSON.stringify(events));
       renderCalendar();
   }
+}
+
+function toggle(){
+  const calendar = document.getElementById("calendar-container");
+  calendar.classList.toggle("hide");
 }
 
 // Beim Laden der Seite alle Daten laden
