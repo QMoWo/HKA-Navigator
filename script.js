@@ -18,19 +18,9 @@ const events = JSON.parse(localStorage.getItem("events")) || [];
 // Darkmode Umschalten
 document.querySelector(".ui-switch input").addEventListener("change", (event) => {
   const body = document.body;
-  const darkModeIcon = document.querySelector(".darkmode img");
 
   // Umschalten des Dark Modes
   body.classList.toggle("dark-mode", event.target.checked);
-
-  // Bild wechseln
-  if (body.classList.contains("dark-mode")) {
-      darkModeIcon.src = "assets/sun-regular (1).svg"; // Bild für den "Lichtmodus"
-      darkModeIcon.alt = "lightmode_logo";
-  } else {
-      darkModeIcon.src = "assets/moon-solid.svg"; // Bild für den "Dunkelmodus"
-      darkModeIcon.alt = "darkmode_logo";
-  }
 
   // Status im localStorage speichern
   localStorage.setItem("darkMode", event.target.checked);
@@ -40,143 +30,208 @@ document.querySelector(".ui-switch input").addEventListener("change", (event) =>
 window.addEventListener("load", () => {
   const isDarkMode = localStorage.getItem("darkMode") === "true";
   const body = document.body;
-  const darkModeIcon = document.querySelector(".darkmode img");
   const slider = document.querySelector(".ui-switch input");
 
-  // if (isDarkMode) {
-  //     body.classList.add("dark-mode");
-  //     slider.checked = true;
-  //     darkModeIcon.src = "assets/sun-regular (1).svg";
-  //     darkModeIcon.alt = "lightmode_logo";
-  // } else {
-  //     slider.checked = false;
-  //     darkModeIcon.src = "assets/moon-solid.svg";
-  //     darkModeIcon.alt = "darkmode_logo";
-  // }
+  if (isDarkMode) {
+    body.classList.add("dark-mode");
+    slider.checked = true;
+  }
 });
 
 
-// document.querySelector(".darkmode img").addEventListener("click", () => {
-//   const body = document.body;
-//   const darkModeIcon = document.querySelector(".darkmode img");
 
-//   // Umschalten des Dark Modes
-//   body.classList.toggle("dark-mode");
 
-//   // Bild wechseln
-//   if (body.classList.contains("dark-mode")) {
-//       darkModeIcon.src = "assets/sun-regular (1).svg"; // Bild für den "Lichtmodus"
-//       darkModeIcon.alt = "lightmode_logo";
-//   } else {
-//       darkModeIcon.src = "assets/moon-solid.svg"; // Bild für den "Dunkelmodus"
-//       darkModeIcon.alt = "darkmode_logo";
+// function addToFavorites(button) {
+//   const linkWrapper = button.parentElement;
+
+//   // Favorisierten Link klonen
+//   const favoriteLink = linkWrapper.cloneNode(true);
+
+//   // Favoriten-Button im Klon ersetzen mit "Entfernen"-Button
+//   const favoriteButton = favoriteLink.querySelector('.favorite-btn');
+//   if (favoriteButton) {
+//       favoriteButton.textContent = 'Entfernen';
+//       favoriteButton.onclick = function () {
+//           removeFromFavorites(this, linkWrapper);
+//       };
 //   }
-// });
 
-// // Dark Mode Status beim Laden prüfen
-// window.addEventListener("load", () => {
-//   const isDarkMode = localStorage.getItem("darkMode") === "true";
-//   const body = document.body;
-//   const darkModeIcon = document.querySelector(".darkmode img");
+//   // Favoritenbereich abrufen und hinzufügen
+//   const favoritesPopup = document.getElementById('popup7').querySelector('.popup-content');
+//   favoritesPopup.appendChild(favoriteLink);
 
-//   if (isDarkMode) {
-//       body.classList.add("dark-mode");
-//       darkModeIcon.src = "assets/sun-regular (1).svg";
-//       darkModeIcon.alt = "lightmode_logo";
-//   }
-// });
+//   // Ursprünglichen Button deaktivieren
+//   button.textContent = 'Bereits Favorisiert';
+//   button.disabled = true;
+//   button.classList.add('disabled');
+//   linkWrapper.dataset.isFavorited = 'true'; // Markiere als favorisiert
 
-// // Status im localStorage speichern
-// document.querySelector(".darkmode img").addEventListener("click", () => {
-//   const body = document.body;
-//   const isDarkMode = body.classList.contains("dark-mode");
-//   localStorage.setItem("darkMode", isDarkMode);
-// });
+// }
+
+// function removeFromFavorites(button, originalWrapper) {
+//   // Entfernt den Link aus dem Favoritenbereich
+//   const linkWrapper = button.parentElement;
+//   linkWrapper.remove();
+
+//   // Original-Button wieder aktivieren
+//   if (originalWrapper) {
+//     const originalButton = originalWrapper.querySelector('.favorite-btn');
+//     if (originalButton) {
+//         originalButton.textContent = 'Favorisieren';
+//         originalButton.disabled = false;
+//         originalButton.classList.remove('disabled');
+//         delete originalWrapper.dataset.isFavorited; // Markierung entfernen
+//     }
+// }
+  
+// }
+
+// function saveFavorites() {
+//   const favoritesPopup = document.getElementById('popup7').querySelector('.popup-content');
+//   const favorites = Array.from(favoritesPopup.children).map(wrapper => {
+//       return {
+//           imgSrc: wrapper.querySelector('img').src,
+//           label: wrapper.querySelector('p').textContent
+//       };
+//   });
+//   localStorage.setItem('favorites', JSON.stringify(favorites));
+// }
+
+// function loadFavorites() {
+//   const favoritesPopup = document.getElementById('popup7').querySelector('.popup-content');
+//   const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+//   savedFavorites.forEach(favorite => {
+//       const linkWrapper = document.createElement('div');
+//       linkWrapper.classList.add('link-wrapper');
+
+//       const img = document.createElement('img');
+//       img.src = favorite.imgSrc;
+//       img.classList.add('link-image');
+
+//       const label = document.createElement('p');
+//       label.textContent = favorite.label;
+//       label.classList.add('link-label');
+
+//       const removeButton = document.createElement('button');
+//       removeButton.classList.add('favorite-btn');
+//       removeButton.textContent = 'Entfernen';
+//       removeButton.onclick = function () {
+//           removeFromFavorites(removeButton);
+//       };
+
+//       linkWrapper.appendChild(img);
+//       linkWrapper.appendChild(label);
+//       linkWrapper.appendChild(removeButton);
+
+//       favoritesPopup.appendChild(linkWrapper);
+//   });
+// }
+
+
+
+
+
+
+
+
+
 
 function addToFavorites(button) {
-  const linkWrapper = button.parentElement;
+  const wrapper = button.closest('.link-wrapper');
+  const label = wrapper.querySelector('.link-label').innerText;
+  const imgSrc = wrapper.querySelector('img').src;
+  const url = wrapper.querySelector('img').onclick.toString().match(/'(.*?)'/)[1];
 
-  // Favorisierten Link klonen
-  const favoriteLink = linkWrapper.cloneNode(true);
+  const popup = document.querySelector('#popup7 .popup-content');
 
-  // Favoriten-Button im Klon ersetzen mit "Entfernen"-Button
-  const favoriteButton = favoriteLink.querySelector('.favorite-btn');
-  if (favoriteButton) {
-      favoriteButton.textContent = 'Entfernen';
-      favoriteButton.onclick = function () {
-          removeFromFavorites(this, linkWrapper);
-      };
+  // Prüfen ob schon vorhanden
+  const alreadyExists = [...popup.querySelectorAll('.link-label')]
+      .some(p => p.innerText === label);
+  
+  if (alreadyExists) {
+      removeFromFavoritesByLabel(label);
+      button.innerText = "Favorisieren";
+      return;
   }
 
-  // Favoritenbereich abrufen und hinzufügen
-  const favoritesPopup = document.getElementById('popup7').querySelector('.popup-content');
-  favoritesPopup.appendChild(favoriteLink);
+  const newWrapper = document.createElement('div');
+  newWrapper.className = 'link-wrapper';
+  newWrapper.innerHTML = `
+      <img src="${imgSrc}" class="link-image" onclick="window.open('${url}')">
+      <p class="link-label">${label}</p>
+      <button class="favorite-btn" onclick="removeFromFavorites(this)">Entfernen</button>
+  `;
+  popup.appendChild(newWrapper);
 
-  // Ursprünglichen Button deaktivieren
-  button.textContent = 'Bereits Favorisiert';
-  button.disabled = true;
-  button.classList.add('disabled');
-  linkWrapper.dataset.isFavorited = 'true'; // Markiere als favorisiert
+  button.innerText = "Entfernen";
+  saveFavorites();
 }
 
-function removeFromFavorites(button, originalWrapper) {
-  // Entfernt den Link aus dem Favoritenbereich
-  const linkWrapper = button.parentElement;
-  linkWrapper.remove();
-
-  // Original-Button wieder aktivieren
-  if (originalWrapper) {
-    const originalButton = originalWrapper.querySelector('.favorite-btn');
-    if (originalButton) {
-        originalButton.textContent = 'Favorisieren';
-        originalButton.disabled = false;
-        originalButton.classList.remove('disabled');
-        delete originalWrapper.dataset.isFavorited; // Markierung entfernen
-    }
+function removeFromFavorites(button) {
+  const wrapper = button.closest('.link-wrapper');
+  wrapper.remove();
+  saveFavorites();
 }
+
+function removeFromFavoritesByLabel(label) {
+  const popup = document.querySelector('#popup7 .popup-content');
+  const items = popup.querySelectorAll('.link-wrapper');
+  items.forEach(item => {
+      if (item.querySelector('.link-label').innerText === label) {
+          item.remove();
+      }
+  });
+  saveFavorites();
 }
 
 function saveFavorites() {
-  const favoritesPopup = document.getElementById('popup7').querySelector('.popup-content');
-  const favorites = Array.from(favoritesPopup.children).map(wrapper => {
+  const popup = document.querySelector('#popup7 .popup-content');
+  const favorites = [...popup.querySelectorAll('.link-wrapper')].map(wrapper => {
       return {
+          label: wrapper.querySelector('.link-label').innerText,
           imgSrc: wrapper.querySelector('img').src,
-          label: wrapper.querySelector('p').textContent
+          url: wrapper.querySelector('img').onclick.toString().match(/'(.*?)'/)[1]
       };
   });
   localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
 function loadFavorites() {
-  const favoritesPopup = document.getElementById('popup7').querySelector('.popup-content');
-  const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const popup = document.querySelector('#popup7 .popup-content');
+  popup.innerHTML = '<span class="close-button" onclick="closePopup(\'popup7\')">&times;</span>';
+  const saved = JSON.parse(localStorage.getItem('favorites')) || [];
 
-  savedFavorites.forEach(favorite => {
-      const linkWrapper = document.createElement('div');
-      linkWrapper.classList.add('link-wrapper');
-
-      const img = document.createElement('img');
-      img.src = favorite.imgSrc;
-      img.classList.add('link-image');
-
-      const label = document.createElement('p');
-      label.textContent = favorite.label;
-      label.classList.add('link-label');
-
-      const removeButton = document.createElement('button');
-      removeButton.classList.add('favorite-btn');
-      removeButton.textContent = 'Entfernen';
-      removeButton.onclick = function () {
-          removeFromFavorites(removeButton);
-      };
-
-      linkWrapper.appendChild(img);
-      linkWrapper.appendChild(label);
-      linkWrapper.appendChild(removeButton);
-
-      favoritesPopup.appendChild(linkWrapper);
+  saved.forEach(fav => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'link-wrapper';
+      wrapper.innerHTML = `
+          <img src="${fav.imgSrc}" class="link-image" onclick="window.open('${fav.url}')">
+          <p class="link-label">${fav.label}</p>
+          <button class="favorite-btn" onclick="removeFromFavorites(this)">Entfernen</button>
+      `;
+      popup.appendChild(wrapper);
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function addLink() {
   const nameInput = document.querySelector('.link-name');
@@ -223,14 +278,6 @@ function removeOwnLink(index) {
   localStorage.setItem('ownLinks', JSON.stringify(storedLinks));
   displayOwnLinks();
 }
-
-// // Beim Laden der Seite Favoriten aus dem lokalen Speicher laden
-// window.onload = loadFavorites;
-
-// // Beim Laden der Seite "Eigene Links" aus dem lokalen Speicher laden
-// window.onload = function () {
-//   displayOwnLinks();
-// };
 
 // Funktion, um einen neuen Termin hinzuzufügen
 function addEvent() {
@@ -285,7 +332,7 @@ function toggle(){
 // Beim Laden der Seite alle Daten laden
 window.onload = function () {
   displayOwnLinks();
-  loadFavorites(); // Falls Favoriten separat verwaltet werden
+  loadFavorites();
   renderCalendar();
 };
 

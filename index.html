@@ -12,7 +12,7 @@
 
             </div>
             <div class="middle">
-
+                <button class="btn-guide" onclick="openPopup('popup_guide')">?</button>
             </div>
             <div class="right">
                 <div class="darkmode">
@@ -38,7 +38,7 @@
                         Ihr Browser unterstützt keine Videos.
                     </video> -->
                     <!-- Das ursprüngliche Logo wird nach dem Video sichtbar -->
-                    <img id="logoImage" src="assets/Hochschule-Karlsruhe-Emblem-700x394.png" alt="Logo" class="logo fade-in" onclick="window.open('https://www.h-ka.de/')">
+                    <img id="logoImage" src="assets/hka-logo.svg" alt="Logo" class="logo fade-in" onclick="window.open('https://www.h-ka.de/')">
                     <!-- <script>
                         // Wenn das Video zu Ende ist, das Bild anzeigen
                         document.getElementById("logoVideo").addEventListener("ended", () => {
@@ -254,6 +254,55 @@
                         <!-- Add more link images as needed-->
                     </div>
                  </div>
+
+                 <div id="popup_guide" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button" onclick="closePopup('popup_guide')">&times;</span>
+                        <div class="link-wrapper">
+                            <div class="intro-text" style="padding: 20px; max-width: 900px; margin: auto;">
+                                <h2 style="text-align: center;">Willkommen auf dem HKA Hub!</h2>
+                                <p style="text-align: center;">
+                                    Schön, dass du hier bist! Du befindest dich auf der zentralen Linksammlung der Hochschule Karlsruhe – 
+                                    ein praktisches Tool für <strong>Studierende</strong>, <strong>Mitarbeitende</strong> und <strong>Professor:innen</strong>.
+                                </p>
+                                <br>
+
+                                <h3>🔗 Zentrale Linksammlung</h3>
+                                <p>
+                                    Die Startseite bietet dir schnellen Zugriff auf wichtige Webseiten der Hochschule: 
+                                    Stundenpläne, Prüfungsanmeldung, ILIAS, Mensa-Angebote und vieles mehr – alles übersichtlich in Kategorien organisiert.
+                                </p>
+                                <br>
+                            
+                                <h3>⭐ Favoriten speichern</h3>
+                                <p>
+                                    Mit einem Klick auf „Favorisieren“ kannst du häufig genutzte Links in deinem persönlichen Favoritenbereich speichern. 
+                                    Diese Auswahl bleibt sogar nach dem Schließen der Seite erhalten – dank automatischer Speicherung im Browser.
+                                </p>
+                                <br>
+
+                                <h3>➕ Eigene Links hinzufügen</h3>
+                                <p>
+                                    Du willst deine eigenen Webseiten, Tools oder Ressourcen integrieren? Kein Problem! 
+                                    Über das Eingabefeld unten kannst du individuelle Links samt Namen hinzufügen und später auch wieder entfernen.
+                                </p>
+                                <br>
+                            
+                                <h3>🌙 Dark Mode</h3>
+                                <p>
+                                    Für ein angenehmes Nutzungserlebnis bei Nacht oder in dunkler Umgebung steht dir ein Dark Mode zur Verfügung. 
+                                    Dieser lässt sich ganz einfach über den Schieberegler oben rechts aktivieren.
+                                </p>
+                            
+                                <p style="margin-top: 20px; text-align: center;">Viel Spaß beim Ausprobieren und ein erfolgreiches Semester! 🎓</p>
+                            </div>
+                            <!-- <img src="assets/books.svg" alt="Link1" class="link-image" onclick="window.open('https://raumzeit.hka-iwi.de/timetables')">
+                            <p class="link-label">Stundenplan</p> -->
+                        </div>
+                        <!-- Add more link images as needed-->
+                    </div>
+                 </div>
+
                  <!-- Popup für "eigene Links" -->
                  <div id="popup8" class="popup">
                     <div class="popup-content">
@@ -296,17 +345,17 @@
 
         </div>
             
-            <!-- <div class="footer">
+            <div class="footer">
                <div class="left">
    
                </div>
                <div class="middle">
-                   Impressum
+                   <a href="impressum.html" style="color: inherit; text-decoration: none;">Impressum</a>
                </div>
                <div class="right">
                    
                </div>
-            </div> -->
+            </div>
         <script src="script.js"></script>
     </body>
 </html>
